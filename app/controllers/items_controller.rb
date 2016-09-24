@@ -9,8 +9,7 @@ class ItemsController < ApplicationController
         keyword: params[:q],
         imageFlag: 1,
       )
-      #@items = response.first(20)
-      @items = Item.all.order("updated_at DESC").limit(30)
+      @items = response.first(20)
     end
   end
 

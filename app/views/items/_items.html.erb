@@ -6,16 +6,16 @@
           
           <!--ここから追加-->
           <div class="img-wrap">
-            <% if item.large_image.present? %>
-              <%= image_tag(item.large_image , alt: item.title) %>
+            <% if item['imageFlag'] == 1 %>
+              <%= image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') ,  alt: item['itemName']) %>
             <% else %>
-              <%= image_tag("no-image.png" , alt: item.title) %>
+              <%= image_tag("no-image.png" , alt: item['itemName']) %>
             <% end %>
           </div>
         </div>
         <div class="detail">
           <p class="title">
-            <%= item.title %>
+            <%= item['itemName'] %>
           </p>
         </div>
            <!--ここまで追加-->
