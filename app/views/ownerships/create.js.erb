@@ -4,5 +4,7 @@
   $(".want-<%= @item.id %>,[item_code='want-<%= @item.item_code %>']").replaceWith("<%= escape_javascript(render('items/unwant' , item: @item)) %>");
 <% end %>
 
+
+
 $('.btn-have,.btn-want').removeAttr('disabled');
 

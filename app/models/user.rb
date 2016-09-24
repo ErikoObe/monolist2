@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
     following_users.include?(other_user)
   end
 
-  ## 
+  ## 6.8 want, haveメソッドの実装
   ## TODO 実装
   # itemをhaveする
   def have(item)
