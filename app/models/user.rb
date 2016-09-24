@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
   has_many :ownerships , foreign_key: "user_id", dependent: :destroy
   has_many :items ,through: :ownerships
 
+  has_many :wants, class_name: "Want", foreign_key: "user_id", dependent: :destroy
+  has_many :want_items , through: :wants, source: :item
+  
+  has_many :haves, class_name: "Have", foreign_key: "user_id", dependent: :destroy
+  has_many :have_items , through: :haves, source: :item
 
   # 他のユーザーをフォローする
   def follow(other_user)
@@ -29,22 +34,37 @@ class User < ActiveRecord::Base
     following_users.include?(other_user)
   end
 
+  ## 
   ## TODO 実装
+  # itemをhaveする
   def have(item)
+    ownerships.find_or_create_by(item_id)
   end
-
+  
+  # itemのhaveを解除する
   def unhave(item)
+    ownership = ownerships.find_by(item_id)
+    ownership.destroy if ownership
   end
-
+  
+  # itemをhaveしている場合true、haveしていない場合falseを返す
   def have?(item)
+    have_items.include?(item)
   end
 
+  # itemをwantする
   def want(item)
+    ownerships.find_or_create_by(item_id)
   end
-
+  
+  # itemのwantを解除する
   def unwant(item)
+    ownership = ownerships.find_by(item_id)
+    ownership.destroy if ownership
   end
-
+  
+  # itemをwantしている場合true、wantしていない場合falseを返す
   def want?(item)
+    want_items.include?(item)
   end
 end
