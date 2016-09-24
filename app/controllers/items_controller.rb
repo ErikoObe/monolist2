@@ -2,13 +2,15 @@ class ItemsController < ApplicationController
   before_action :logged_in_user , except: [:show]
   before_action :set_item, only: [:show]
 
+
   def new
     if params[:q]
       response = RakutenWebService::Ichiba::Item.search(
         keyword: params[:q],
         imageFlag: 1,
       )
-      @items = response.first(20)
+      #@items = response.first(20)
+      @items = Item.all.order("updated_at DESC").limit(30)
     end
   end
 

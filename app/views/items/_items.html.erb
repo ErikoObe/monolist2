@@ -3,6 +3,24 @@
     <% items.each do |item| %>
       <div class="item-box">
         <div class="image">
+          
+          <!--ここから追加-->
+          <div class="img-wrap">
+            <% if item.large_image.present? %>
+              <%= image_tag(item.large_image , alt: item.title) %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item.title) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="detail">
+          <p class="title">
+            <%= item.title %>
+          </p>
+        </div>
+           <!--ここまで追加-->
+          
+          <!--
           <div class="img-wrap">
             <% #TODO 商品画像 %>
             <%= image_tag("no-image.png" , alt: item['itemName']) %>
@@ -14,6 +32,7 @@
             仮タイトル
           </p>
         </div>
+        -->
         <div class="action clearfix">
           <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want") ,
                       :class => "btn-want btn btn-danger btn-sm want",
