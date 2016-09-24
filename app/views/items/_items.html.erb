@@ -3,6 +3,24 @@
     <% items.each do |item| %>
       <div class="item-box">
         <div class="image">
+          
+          <!--ここから追加-->
+          <div class="img-wrap">
+            <% if item['imageFlag'] == 1 %>
+              <%= image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') ,  alt: item['itemName']) %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item['itemName']) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="detail">
+          <p class="title">
+            <%= item['itemName'] %>
+          </p>
+        </div>
+           <!--ここまで追加-->
+          
+          <!--
           <div class="img-wrap">
             <% #TODO 商品画像 %>
             <%= image_tag("no-image.png" , alt: item['itemName']) %>
@@ -14,6 +32,7 @@
             仮タイトル
           </p>
         </div>
+        -->
         <div class="action clearfix">
           <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want") ,
                       :class => "btn-want btn btn-danger btn-sm want",
