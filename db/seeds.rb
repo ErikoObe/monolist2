@@ -52,20 +52,3 @@ user3.follow(user6)
 user4.follow(user1)
 user4.follow(user2)
 user4.follow(user3)
-
-
-## 課題：「Have」「Want」ボタンの実装
-ownership1 = Ownership.create (user_id: "23" , item_id: "1" , type: "Have")
-ownership2 = Ownership.create (user_id: "23" , item_id: "2" , type: "Have")
-ownership3 = Ownership.create (user_id: "23" , item_id: "3" , type: "Have")
-ownership4 = Ownership.create (user_id: "23" , item_id: "4" , type: "Want")
-ownership5 = Ownership.create (user_id: "23" , item_id: "5" , type: "Want")
-ownership6 = Ownership.create (user_id: "23" , item_id: "3" , type: "Want")
-
-item1 = Item.create(item_code: 'book:16931693', title: 'パーフェクトRuby　on　Rails [ すがわらまさのり ]', detail_page_url: 'http://item.rakuten.co.jp/book/12770135/', small_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5165/9784774165165.jpg?_ex=64x64', medium_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5165/9784774165165.jpg?_ex=128x128', large_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/5165/9784774165165.jpg')
-item2 = Item.create(item_code: 'booxstore:11284424', title: 'Ruby　on　Rails　4アプリケーションプログラミング／山田祥寛【2500円以上送料無料】', detail_page_url: 'http://item.rakuten.co.jp/booxstore/bk-4774164100/', small_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/booxstore/cabinet/00566/bk4774164100.jpg?_ex=64x64', medium_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/booxstore/cabinet/00566/bk4774164100.jpg?_ex=128x128', large_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/booxstore/cabinet/00566/bk4774164100.jpg')
-item3 = Item.create(item_code: 'book:17434418', title: '基礎Ruby　on　Rails改訂3版 [ 黒田努 ]', detail_page_url: 'http://item.rakuten.co.jp/book/13229503/', small_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8154/9784844338154.jpg?_ex=64x64', medium_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8154/9784844338154.jpg?_ex=128x128', large_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8154/9784844338154.jpg')
-item4 = Item.create(item_code: 'book:17211665', title: 'Bootstrapファーストガイド [ 相澤裕介 ]', detail_page_url: 'http://item.rakuten.co.jp/book/13033052/', small_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3602/9784877833602.jpg?_ex=64x64', medium_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3602/9784877833602.jpg?_ex=128x128', large_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/3602/9784877833602.jpg')
-item5 = Item.create(item_code: 'book:16716714', title: 'はじめてのBootstrap [ 槇俊明 ]', detail_page_url: 'http://item.rakuten.co.jp/book/12567734/', small_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7992/9784777517992.jpg?_ex=64x64', medium_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7992/9784777517992.jpg?_ex=128x128', large_image: 'http://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/7992/9784777517992.jpg')
-
-
