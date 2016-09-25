@@ -22,23 +22,18 @@
       <li>
         <div class="status-label">WANT</div>
         <div id="want_count" class="status-value">
-          789
+          <%= user.want_items.count %>
         </div>
       </li>
       <li>
         <div class="status-label">HAVE</div>
         <div id="have_count" class="status-value">
-          123
+          <%= user.have_items.count %>
         </div>
       </li>
     </ul>
     
-    <!--
-    ボタン　
-    if カレントユーザが、既にユーザをフォローしている場合（グリーン&プラスアイコン）
-    else　まだフォローしていない場合　（ブルー&チェックアイコン）
-    ※ want/want it の出し分けを参考にする。（<=レビュー待ち）
-    -->
+
     <%= render 'follow_form' if logged_in? && @user != current_user %>
   </div>
 </div>
