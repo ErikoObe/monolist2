@@ -34,13 +34,12 @@
         </div>
         -->
         <div class="action clearfix">
-          <!--課題：「Have」「Want」ボタンの実装-->
-          <% if params[:type] == "Want" %>
-            <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want it") ,
-                        :class => "btn-want_it btn btn-success btn-sm want_it",
+          <% if logged_in? && @current_user.item_status_want?(item['itemCode'])  %>
+            <%= link_to "" , ownership_path(id: @current_user.getWantItemId(item['itemCode']) ,item_id: @current_user.getWantItemId(item['itemCode']) ,type: "Want") ,
+                        :class => "btn-want btn btn-danger btn-sm want_it",
                         :item_code => "want-#{item['itemCode']}",
                         :remote => true,
-                        :method => :post %>
+                        :method => :delete %>
           <% else %>
             <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want") ,
                         :class => "btn-want btn btn-danger btn-sm want",
@@ -48,19 +47,22 @@
                         :remote => true,
                         :method => :post %>
           <% end %>
-          <% if params[:type] == "Have" %>
-            <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Have it") ,
-                        :class => "btn-have_it btn btn-success btn-sm have_it",
+          <% if logged_in? && @current_user.item_status_have?(item['itemCode'])  %>
+            <%= link_to "" , ownership_path(id: @current_user.getHaveItemId(item['itemCode']) ,item_id: @current_user.getHaveItemId(item['itemCode']), type: "Have") ,
+                        :class => "btn-have btn btn-warning btn-sm have_it",
                         :item_code => "have-#{item['itemCode']}",
                         :remote => true,
-                        :method => :post %>
+                        :method => :delete %>
           <% else %>
             <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Have") ,
                         :class => "btn-have btn btn-warning btn-sm have",
                         :item_code => "have-#{item['itemCode']}",
                         :remote => true,
                         :method => :post %>
-          <% end %>
+                      
+          <% end %>               
+                      
+                      
         </div>
       </div>
     <% end %>

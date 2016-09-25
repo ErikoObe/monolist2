@@ -38,13 +38,13 @@ class User < ActiveRecord::Base
   ## TODO 実装
   # itemをhaveする
   def have(item)
-    ownerships.find_or_create_by(item_id)
+    haves.find_or_create_by(item_id: item.id)
   end
   
   # itemのhaveを解除する
   def unhave(item)
-    ownership = ownerships.find_by(item_id)
-    ownership.destroy if ownership
+    have = haves.find_by(item_id: item.id)
+    have.destroy if have
   end
   
   # itemをhaveしている場合true、haveしていない場合falseを返す
@@ -54,17 +54,40 @@ class User < ActiveRecord::Base
 
   # itemをwantする
   def want(item)
-    ownerships.find_or_create_by(item_id)
+    wants.find_or_create_by(item_id: item.id)
   end
   
   # itemのwantを解除する
   def unwant(item)
-    ownership = ownerships.find_by(item_id)
-    ownership.destroy if ownership
+    want = wants.find_by(item_id: item.id)
+    want.destroy if want
   end
   
   # itemをwantしている場合true、wantしていない場合falseを返す
   def want?(item)
     want_items.include?(item)
+  end
+  
+  def item_status_want? (item_code)
+    item = want_items.find_by(item_code: item_code)
+    item_id = item.id if item.present?
+    wants.find_by(item_id: item_id) if wants
+  end
+  def getWantItemId (item_code)
+    item = want_items.find_by(item_code: item_code)
+    item_id = item.id if item.present?
+    item_id
+  end
+
+
+  def item_status_have? (item_code)
+    item = have_items.find_by(item_code: item_code)
+    item_id = item.id if item.present?
+    haves.find_by(item_id: item_id) if haves
+  end
+  def getHaveItemId (item_code)
+    item = have_items.find_by(item_code: item_code)
+    item_id = item.id if item.present?
+    item_id
   end
 end

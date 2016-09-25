@@ -32,7 +32,13 @@
         </div>
       </li>
     </ul>
-
+    
+    <!--
+    ボタン　
+    if カレントユーザが、既にユーザをフォローしている場合（グリーン&プラスアイコン）
+    else　まだフォローしていない場合　（ブルー&チェックアイコン）
+    ※ want/want it の出し分けを参考にする。（<=レビュー待ち）
+    -->
     <%= render 'follow_form' if logged_in? && @user != current_user %>
   </div>
 </div>
