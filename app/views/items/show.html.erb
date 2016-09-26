@@ -4,12 +4,16 @@
       <div class="image">
         <div class="img-wrap">
           <% #TODO 商品イメージ %>
-          <%= image_tag("no-image.png" , alt: @item.title) %>
+          <% if @item.large_image.present? %>
+            <%= image_tag(@item.large_image , alt: @item.title) %>
+          <% else %>
+            <%= image_tag("no-image.png" , alt: @item.title) %>
+          <% end %>
         </div>
       </div>
       <div class="title">
         <% #TODO 商品タイトル %>
-        仮タイトル
+           <%= @item.title %>
       </div>
       <%= render 'action' , item: @item %>
     </div>
@@ -18,18 +22,27 @@
         <h4 class="side-box-title">Haveしたユーザー</h4>
         <div class="side-box-body">
           <% # TODO Haveしたユーザー一覧 %>
-
+            <div class="haves">
+              <% @item.have_users.each do |user| %>
+                  <%= link_to  gravatar_for(user, size: 20), user, class: "gravatar" %>
+              <% end %>
+            </div>
         </div>
       </div>
       <div class="side-box">
         <h4 class="side-box-title">Wantしたユーザー</h4>
         <div class="side-box-body">
           <% # TODO Wantしたユーザー一覧 %>
+            <div class="wants">
+              <% @item.want_users.each do |user| %>
+                  <%= link_to  gravatar_for(user, size: 20), user, class: "gravatar" %>
+              <% end %>
+            </div>
         </div>
       </div>
       <div class="text-center">
         <% #TODO 正しいリンク先に %>
-        <%= link_to('楽天詳細ページへ', '#') %>
+        <%= link_to('楽天詳細ページへ', @item.detail_page_url) %>
       </div>
     </div>
   </div>
