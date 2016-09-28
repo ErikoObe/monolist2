@@ -1,6 +1,13 @@
 <div class="container">
   <div class="container-inner inner-sm clearfix">
     <div class="item-single-main">
+      <div class="meta">
+        <%= content_for :head do %>
+          <title><%= @item.title %>- monolist</title>
+          <meta description="<%= @item.description %>に関する情報です。この商品を欲しい人、持ってる人を表示しています">
+        <% end %>
+      </div>
+      
       <div class="image">
         <div class="img-wrap">
           <% #TODO 商品イメージ %>
@@ -17,6 +24,8 @@
       </div>
       <%= render 'action' , item: @item %>
     </div>
+    
+
     <div class="item-single-side">
       <div class="side-box">
         <h4 class="side-box-title">Haveしたユーザー</h4>

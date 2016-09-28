@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
   def set_item
     @item = Item.find(params[:id])
